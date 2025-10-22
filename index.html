@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kolo štěstí</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="wheel-panel">
+        <div class="wheel-container" id="wheelContainer" title="Klikni pro roztočení">
+          <canvas id="wheelCanvas"></canvas>
+          <div class="pointer" aria-hidden="true"></div>
+          <div class="overlay-text">
+            Click to spin
+            <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="controls-panel">
+        <div class="panel-head">
+          <h3>Entries</h3>
+          <div class="btn-row">
+            <button id="shuffleBtn" class="btn">Shuffle</button>
+            <button id="sortBtn" class="btn">Sort</button>
+          </div>
+        </div>
+        <textarea id="entriesInput" placeholder="Zadej jména, každé na nový řádek"></textarea>
+
+        <div class="rigged-row">
+          <label for="riggedInput">Guaranteed winner (100% drop)</label>
+          <input id="riggedInput" type="text" placeholder="Jméno pro 100% výhru (volitelné)" />
+          <div id="riggedHint" class="rigged-hint" aria-live="polite"></div>
+        </div>
+
+        <div class="options-row">
+          <label><input type="checkbox" id="removeWinnerOnce" /> Remove winner slice after draw</label>
+        </div>
+
+        <div class="btn-row">
+          <button id="spinBtn" class="btn btn-primary">Spin</button>
+          <button id="clearResultsBtn" class="btn btn-ghost">Clear results</button>
+        </div>
+
+        <div class="results">
+          <div class="results-head">
+            <h3>Results</h3>
+            <span id="resultsCount" class="muted">0</span>
+          </div>
+          <ol id="resultsList"></ol>
+        </div>
+      </aside>
+    </div>
+
+    <dialog id="winnerDialog">
+      <div class="winner-card">
+        <h2>We have a winner!</h2>
+        <div id="winnerName" class="winner-name">—</div>
+        <div class="btn-row">
+          <button value="close" class="btn">Close</button>
+          <button id="removeOneBtn" class="btn btn-warning">Remove</button>
+          <button id="removeAllBtn" class="btn btn-danger">Remove all instances</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="main.js"></script>
+  </body>
+</html>
